@@ -1,15 +1,15 @@
-# 🗺️ Development Roadmap
+﻿#  Development Roadmap
 
 A phased approach to building the AI Drawing Canvas application.
 
-## 📅 Timeline Overview
+##  Timeline Overview
 
 **Total Estimated Time:** 6-8 weeks (for full-featured application)
 **MVP Time:** 2-3 weeks
 
 ---
 
-## 🎯 Phase 1: Foundation (Week 1-2)
+##  Phase 1: Foundation (Week 1-2)
 
 **Goal:** Get a working drawing canvas with basic tools
 
@@ -56,7 +56,7 @@ A phased approach to building the AI Drawing Canvas application.
 
 ---
 
-## 🤖 Phase 2: AI Integration (Week 3-4)
+##  Phase 2: AI Integration (Week 3-4)
 
 **Goal:** Connect to Groq API and enable AI problem-solving
 
@@ -107,7 +107,7 @@ A phased approach to building the AI Drawing Canvas application.
 
 ---
 
-## 🎨 Phase 3: AI Drawing (Week 5)
+##  Phase 3: AI Drawing (Week 5)
 
 **Goal:** Enable AI to draw solutions on canvas
 
@@ -133,7 +133,7 @@ A phased approach to building the AI Drawing Canvas application.
 
 ---
 
-## 🔄 Phase 4: Real-time Features (Week 6)
+##  Phase 4: Real-time Features (Week 6)
 
 **Goal:** Add real-time communication and collaboration
 
@@ -159,7 +159,7 @@ A phased approach to building the AI Drawing Canvas application.
 
 ---
 
-## 🚀 Phase 5: Polish & Deploy (Week 7-8)
+##  Phase 5: Polish & Deploy (Week 7-8)
 
 **Goal:** Production-ready application
 
@@ -205,29 +205,29 @@ A phased approach to building the AI Drawing Canvas application.
 
 ---
 
-## 🎯 MVP Scope (2-3 Weeks)
+##  MVP Scope (2-3 Weeks)
 
 If you want to launch faster, focus on these core features:
 
 ### Must-Have Features
 
-✅ Basic drawing canvas (pen, eraser, clear)
-✅ Capture and send drawing to backend
-✅ Groq API integration for solving
-✅ Display text-based AI response
-✅ Simple, clean UI
+ Basic drawing canvas (pen, eraser, clear)
+ Capture and send drawing to backend
+ Groq API integration for solving
+ Display text-based AI response
+ Simple, clean UI
 
 ### Can Wait for V2
 
-⏸️ AI drawing on canvas
-⏸️ Real-time collaboration
-⏸️ Advanced drawing tools
-⏸️ Save/load sessions
-⏸️ User accounts
+ AI drawing on canvas
+ Real-time collaboration
+ Advanced drawing tools
+ Save/load sessions
+ User accounts
 
 ---
 
-## 📊 Progress Tracking
+##  Progress Tracking
 
 Use this checklist to track your progress:
 
@@ -266,13 +266,13 @@ Use this checklist to track your progress:
 
 ---
 
-## 🔄 Iteration Strategy
+##  Iteration Strategy
 
 ### Sprint 1 (MVP)
 
 Focus on core value proposition:
 
--   Draw → Solve → Display
+-   Draw  Solve  Display
 
 ### Sprint 2 (Enhancement)
 
@@ -294,7 +294,7 @@ Prepare for users:
 
 ---
 
-## 🎓 Learning Resources by Phase
+##  Learning Resources by Phase
 
 ### Phase 1: Canvas
 
@@ -327,7 +327,7 @@ Prepare for users:
 
 ---
 
-## 💡 Tips for Success
+##  Tips for Success
 
 1. **Start Simple:** Don't try to build everything at once
 2. **Test Early:** Test each feature as you build it
@@ -340,16 +340,16 @@ Prepare for users:
 
 ---
 
-## 🎉 Milestone Celebrations
+##  Milestone Celebrations
 
--   ✅ First successful drawing: You're a canvas master!
--   ✅ First API call works: You're connected!
--   ✅ AI solves first problem: It's alive!
--   ✅ AI draws on canvas: Magic is happening!
--   ✅ Deployed to production: You're live!
+-    First successful drawing: You're a canvas master!
+-    First API call works: You're connected!
+-    AI solves first problem: It's alive!
+-    AI draws on canvas: Magic is happening!
+-    Deployed to production: You're live!
 
 ---
 
 **Remember:** Building in public, getting feedback early, and iterating quickly is better than building in isolation for months!
 
-**Start coding now!** 🚀
+**Start coding now!** 

@@ -1,17 +1,17 @@
-# 📡 API Specification
+﻿#  API Specification
 
 Complete API documentation for the AI Drawing Canvas backend.
 
 ---
 
-## 🌐 Base URL
+##  Base URL
 
 **Development:** `http://localhost:3000/api`
 **Production:** `https://your-domain.com/api`
 
 ---
 
-## 🔐 Authentication
+##  Authentication
 
 Currently no authentication required (to be added in Phase 4).
 
@@ -23,7 +23,7 @@ Authorization: Bearer <jwt_token>
 
 ---
 
-## 📋 Endpoints
+##  Endpoints
 
 ### Canvas Operations
 
@@ -332,7 +332,7 @@ Authorization: Bearer <jwt_token>
 
 ---
 
-## 🔌 WebSocket Events
+##  WebSocket Events
 
 ### Connection
 
@@ -346,7 +346,7 @@ socket.on("connect", () => {
 
 ### Events Reference
 
-#### Client → Server
+#### Client  Server
 
 ##### 1. `drawing:start`
 
@@ -411,7 +411,7 @@ socket.emit('chat:message', {
 });
 ```
 
-#### Server → Client
+#### Server  Client
 
 ##### 1. `drawing:update`
 
@@ -501,7 +501,7 @@ socket.on("user:joined", (data) => {
 
 ---
 
-## 🔒 Error Responses
+##  Error Responses
 
 All errors follow this format:
 
@@ -547,7 +547,7 @@ All errors follow this format:
 
 ---
 
-## 📊 Rate Limiting
+##  Rate Limiting
 
 ### Limits
 
@@ -565,7 +565,7 @@ X-RateLimit-Reset: 1698753600
 
 ---
 
-## 🧪 Example API Usage
+##  Example API Usage
 
 ### JavaScript (Fetch)
 
@@ -636,7 +636,7 @@ curl -X POST http://localhost:3000/api/ai/solve \
 
 ---
 
-## 🔄 API Versioning
+##  API Versioning
 
 Currently using URL versioning:
 
@@ -645,7 +645,7 @@ Currently using URL versioning:
 
 ---
 
-## 📚 Additional Resources
+##  Additional Resources
 
 -   [Groq API Docs](https://console.groq.com/docs)
 -   [Socket.io Docs](https://socket.io/docs/v4/)

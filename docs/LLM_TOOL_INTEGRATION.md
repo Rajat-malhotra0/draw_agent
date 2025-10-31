@@ -1,4 +1,4 @@
-# LLM Tool Integration
+﻿# LLM Tool Integration
 
 ## Overview
 
@@ -145,25 +145,25 @@ GET http://localhost:3000/api/canvas/state
 
 ## WebSocket Events
 
-### Client → Server
+### Client  Server
 
 -   `draw` - User drawing data
 -   `clear` - Clear canvas request
 
-### Server → Client
+### Server  Client
 
 -   `llm-draw` - LLM drawing commands
 -   `clear` - Clear canvas broadcast
 
 ## Features
 
-✅ Real-time LLM drawing on canvas
-✅ Vision model (Llama 4 Scout) analyzes drawings
-✅ Tool calling for annotations
-✅ WebSocket for instant updates
-✅ SVG icons (no emojis)
-✅ Modal solution display
-✅ Multi-user collaboration ready
+ Real-time LLM drawing on canvas
+ Vision model (Llama 4 Scout) analyzes drawings
+ Tool calling for annotations
+ WebSocket for instant updates
+ SVG icons (no emojis)
+ Modal solution display
+ Multi-user collaboration ready
 
 ## Testing
 

@@ -1,6 +1,6 @@
-# Interactive Drawing Canvas with AI Agent - Project Plan
+﻿# Interactive Drawing Canvas with AI Agent - Project Plan
 
-## 🎯 Project Overview
+##  Project Overview
 
 Build a web-based interactive drawing canvas where users can draw mathematical problems and an AI agent (powered by Groq) can:
 
@@ -10,32 +10,32 @@ Build a web-based interactive drawing canvas where users can draw mathematical p
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ### Tech Stack
 
 ```
 Frontend:
-├── HTML5 Canvas API (drawing surface)
-├── JavaScript/TypeScript (core logic)
-├── React.js (UI framework) or Vanilla JS
-├── Fabric.js or Konva.js (canvas manipulation library)
-└── TailwindCSS (styling)
+ HTML5 Canvas API (drawing surface)
+ JavaScript/TypeScript (core logic)
+ React.js (UI framework) or Vanilla JS
+ Fabric.js or Konva.js (canvas manipulation library)
+ TailwindCSS (styling)
 
 Backend:
-├── Node.js + Express.js (API server)
-├── WebSocket/Socket.io (real-time communication)
-└── Groq API Integration (AI processing)
+ Node.js + Express.js (API server)
+ WebSocket/Socket.io (real-time communication)
+ Groq API Integration (AI processing)
 
 AI/ML:
-├── Groq API (LLM for math solving)
-├── OCR/Handwriting Recognition (Google Vision API or Tesseract.js)
-└── Image Processing (Sharp or Canvas-to-Blob)
+ Groq API (LLM for math solving)
+ OCR/Handwriting Recognition (Google Vision API or Tesseract.js)
+ Image Processing (Sharp or Canvas-to-Blob)
 ```
 
 ---
 
-## 📋 Core Features
+##  Core Features
 
 ### Phase 1: Basic Canvas Implementation
 
@@ -143,114 +143,114 @@ AI/ML:
 
 ---
 
-## 🗂️ Project Structure
+##  Project Structure
 
 ```
 draw_agent/
-├── frontend/
-│   ├── public/
-│   │   ├── index.html
-│   │   └── assets/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Canvas/
-│   │   │   │   ├── DrawingCanvas.jsx
-│   │   │   │   ├── CanvasToolbar.jsx
-│   │   │   │   └── CanvasControls.jsx
-│   │   │   ├── AI/
-│   │   │   │   ├── ChatPanel.jsx
-│   │   │   │   ├── AgentStatus.jsx
-│   │   │   │   └── SolutionDisplay.jsx
-│   │   │   └── Layout/
-│   │   │       ├── Header.jsx
-│   │   │       └── Sidebar.jsx
-│   │   ├── hooks/
-│   │   │   ├── useCanvas.js
-│   │   │   ├── useAI.js
-│   │   │   └── useWebSocket.js
-│   │   ├── utils/
-│   │   │   ├── canvasUtils.js
-│   │   │   ├── imageProcessing.js
-│   │   │   └── drawingHelpers.js
-│   │   ├── services/
-│   │   │   ├── api.js
-│   │   │   └── websocket.js
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── package.json
-│   └── vite.config.js (or webpack)
-│
-├── backend/
-│   ├── src/
-│   │   ├── routes/
-│   │   │   ├── ai.routes.js
-│   │   │   └── canvas.routes.js
-│   │   ├── controllers/
-│   │   │   ├── aiController.js
-│   │   │   └── canvasController.js
-│   │   ├── services/
-│   │   │   ├── groqService.js
-│   │   │   ├── ocrService.js
-│   │   │   └── imageService.js
-│   │   ├── middleware/
-│   │   │   ├── auth.js
-│   │   │   └── errorHandler.js
-│   │   ├── utils/
-│   │   │   ├── promptBuilder.js
-│   │   │   └── responseParser.js
-│   │   ├── config/
-│   │   │   └── config.js
-│   │   ├── websocket/
-│   │   │   └── socketHandler.js
-│   │   └── server.js
-│   ├── package.json
-│   └── .env.example
-│
-├── shared/
-│   └── types/
-│       └── interfaces.ts
-│
-├── docs/
-│   ├── API.md
-│   ├── SETUP.md
-│   └── ARCHITECTURE.md
-│
-├── .gitignore
-├── README.md
-└── docker-compose.yml (optional)
+ frontend/
+    public/
+       index.html
+       assets/
+    src/
+       components/
+          Canvas/
+             DrawingCanvas.jsx
+             CanvasToolbar.jsx
+             CanvasControls.jsx
+          AI/
+             ChatPanel.jsx
+             AgentStatus.jsx
+             SolutionDisplay.jsx
+          Layout/
+              Header.jsx
+              Sidebar.jsx
+       hooks/
+          useCanvas.js
+          useAI.js
+          useWebSocket.js
+       utils/
+          canvasUtils.js
+          imageProcessing.js
+          drawingHelpers.js
+       services/
+          api.js
+          websocket.js
+       App.jsx
+       main.jsx
+    package.json
+    vite.config.js (or webpack)
+
+ backend/
+    src/
+       routes/
+          ai.routes.js
+          canvas.routes.js
+       controllers/
+          aiController.js
+          canvasController.js
+       services/
+          groqService.js
+          ocrService.js
+          imageService.js
+       middleware/
+          auth.js
+          errorHandler.js
+       utils/
+          promptBuilder.js
+          responseParser.js
+       config/
+          config.js
+       websocket/
+          socketHandler.js
+       server.js
+    package.json
+    .env.example
+
+ shared/
+    types/
+        interfaces.ts
+
+ docs/
+    API.md
+    SETUP.md
+    ARCHITECTURE.md
+
+ .gitignore
+ README.md
+ docker-compose.yml (optional)
 ```
 
 ---
 
-## 🔄 Data Flow
+##  Data Flow
 
-### User Drawing → AI Analysis → AI Response
+### User Drawing  AI Analysis  AI Response
 
 ```
 1. User draws on canvas
-   ↓
+   
 2. User clicks "Solve" button
-   ↓
+   
 3. Frontend captures canvas region as image
-   ↓
+   
 4. Image sent to backend via API
-   ↓
+   
 5. Backend processes image (OCR)
-   ↓
+   
 6. Extracted text/math sent to Groq API
-   ↓
+   
 7. Groq returns solution
-   ↓
+   
 8. Backend parses and structures response
-   ↓
+   
 9. Response sent to frontend
-   ↓
+   
 10. AI "draws" solution on canvas with animation
 ```
 
 ---
 
-## 🔌 API Endpoints
+##  API Endpoints
 
 ### Canvas Operations
 
@@ -282,7 +282,7 @@ draw_agent/
 
 ---
 
-## 🛠️ Implementation Steps
+##  Implementation Steps
 
 ### Week 1: Setup & Basic Canvas
 
@@ -334,7 +334,7 @@ draw_agent/
 
 ---
 
-## 🔑 Key Technical Challenges & Solutions
+##  Key Technical Challenges & Solutions
 
 ### Challenge 1: Handwriting Recognition Accuracy
 
@@ -374,7 +374,7 @@ draw_agent/
 
 ---
 
-## 🔐 Security Considerations
+##  Security Considerations
 
 1. **API Key Protection**
 
@@ -395,7 +395,7 @@ draw_agent/
 
 ---
 
-## 📊 Groq API Integration Details
+##  Groq API Integration Details
 
 ### Recommended Model: Llama 4 Scout
 
@@ -435,11 +435,11 @@ const solution = response.choices[0].message.content;
 
 **Why Llama 4 Scout?**
 
--   ✅ Native vision capabilities (processes images directly)
--   ✅ 17B parameters - optimal balance of speed & accuracy
--   ✅ 16,000 token context - handles complex problems
--   ✅ Excellent at mathematical reasoning
--   ✅ Fast inference on Groq's infrastructure (~300 tokens/sec)
+-    Native vision capabilities (processes images directly)
+-    17B parameters - optimal balance of speed & accuracy
+-    16,000 token context - handles complex problems
+-    Excellent at mathematical reasoning
+-    Fast inference on Groq's infrastructure (~300 tokens/sec)
 
 ### Prompt Engineering Tips
 
@@ -450,7 +450,7 @@ const solution = response.choices[0].message.content;
 
 ---
 
-## 🧪 Testing Strategy
+##  Testing Strategy
 
 ### Unit Tests
 
@@ -468,14 +468,14 @@ const solution = response.choices[0].message.content;
 
 ### E2E Tests
 
--   Complete user flow: draw → solve → display
+-   Complete user flow: draw  solve  display
 -   Multi-user collaboration
 -   Canvas save/load
 -   Export functionality
 
 ---
 
-## 📈 Performance Optimization
+##  Performance Optimization
 
 1. **Canvas Rendering**
 
@@ -496,7 +496,7 @@ const solution = response.choices[0].message.content;
 
 ---
 
-## 🚀 Deployment
+##  Deployment
 
 ### Frontend
 
@@ -523,7 +523,7 @@ CORS_ORIGIN=https://your-frontend-domain.com
 
 ---
 
-## 📚 Resources & Documentation
+##  Resources & Documentation
 
 ### Libraries
 
@@ -541,7 +541,7 @@ CORS_ORIGIN=https://your-frontend-domain.com
 
 ---
 
-## 🎨 UI/UX Considerations
+##  UI/UX Considerations
 
 ### Layout
 
@@ -574,7 +574,7 @@ CORS_ORIGIN=https://your-frontend-domain.com
 
 ---
 
-## 🎯 Success Metrics
+##  Success Metrics
 
 1. **Functionality**
 
@@ -595,7 +595,7 @@ CORS_ORIGIN=https://your-frontend-domain.com
 
 ---
 
-## 🔄 Future Enhancements
+##  Future Enhancements
 
 1. **Advanced Math Support**
 
@@ -622,7 +622,7 @@ CORS_ORIGIN=https://your-frontend-domain.com
 
 ---
 
-## 📝 Notes
+##  Notes
 
 -   Start with Phase 1 and 2 for MVP
 -   Focus on core functionality before advanced features

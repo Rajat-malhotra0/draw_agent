@@ -1,14 +1,14 @@
-# 🔧 Technology Decisions & Rationale
+﻿#  Technology Decisions & Rationale
 
 This document explains the key technology choices for the AI Drawing Canvas project.
 
 ---
 
-## 🎨 Frontend Stack
+##  Frontend Stack
 
-### React.js ⚛️
+### React.js 
 
-**Chosen:** ✅ Yes
+**Chosen:**  Yes
 
 **Why:**
 
@@ -25,9 +25,9 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 -   **Svelte:** Great but less mature ecosystem
 -   **Angular:** Too heavy for this use case
 
-### Vite ⚡
+### Vite 
 
-**Chosen:** ✅ Yes
+**Chosen:**  Yes
 
 **Why:**
 
@@ -45,9 +45,9 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 
 ### Canvas Library: Fabric.js vs Konva.js
 
-**Chosen:** 🤔 Either (recommendation: **Fabric.js**)
+**Chosen:**  Either (recommendation: **Fabric.js**)
 
-#### Fabric.js ✅
+#### Fabric.js 
 
 **Pros:**
 
@@ -78,9 +78,9 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 
 **Recommendation:** Start with **Fabric.js** for its maturity, switch to Konva if you need React-specific features.
 
-### Styling: TailwindCSS 🎨
+### Styling: TailwindCSS 
 
-**Chosen:** ✅ Yes
+**Chosen:**  Yes
 
 **Why:**
 
@@ -99,11 +99,11 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 
 ---
 
-## 🖥️ Backend Stack
+##  Backend Stack
 
-### Node.js + Express.js 🟢
+### Node.js + Express.js 
 
-**Chosen:** ✅ Yes
+**Chosen:**  Yes
 
 **Why:**
 
@@ -121,9 +121,9 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 -   **Java/Spring Boot:** Too heavy for this project
 -   **Deno:** Too new, smaller ecosystem
 
-### Real-time: Socket.io 🔌
+### Real-time: Socket.io 
 
-**Chosen:** ✅ Yes
+**Chosen:**  Yes
 
 **Why:**
 
@@ -140,9 +140,9 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 -   **Server-Sent Events:** One-way communication only
 -   **Pusher/Ably:** Third-party service, costs money
 
-### Image Processing: Sharp 🖼️
+### Image Processing: Sharp 
 
-**Chosen:** ✅ Yes
+**Chosen:**  Yes
 
 **Why:**
 
@@ -160,11 +160,11 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 
 ---
 
-## 🤖 AI & ML Stack
+##  AI & ML Stack
 
-### LLM Provider: Groq 🚀
+### LLM Provider: Groq 
 
-**Chosen:** ✅ Yes
+**Chosen:**  Yes
 
 **Why:**
 
@@ -184,9 +184,9 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 
 ### OCR: Google Cloud Vision API (Primary) + Tesseract.js (Fallback)
 
-**Chosen:** ✅ Hybrid Approach
+**Chosen:**  Hybrid Approach
 
-#### Google Cloud Vision API 👁️
+#### Google Cloud Vision API 
 
 **Pros:**
 
@@ -201,7 +201,7 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 -   Requires internet
 -   Privacy concerns (data sent to Google)
 
-#### Tesseract.js 📝
+#### Tesseract.js 
 
 **Pros:**
 
@@ -222,9 +222,9 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 -   Upgrade to Google Vision API when accuracy is critical
 -   Offer both as options to users
 
-### Math Rendering: KaTeX 📐
+### Math Rendering: KaTeX 
 
-**Chosen:** ✅ Yes
+**Chosen:**  Yes
 
 **Why:**
 
@@ -242,11 +242,11 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 
 ---
 
-## 💾 Data Storage
+##  Data Storage
 
 ### For MVP: LocalStorage + JSON Files
 
-**Chosen:** ✅ Yes (for now)
+**Chosen:**  Yes (for now)
 
 **Why:**
 
@@ -263,9 +263,9 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 
 ### For Production: PostgreSQL + Redis
 
-**Recommended:** ✅ Yes (future)
+**Recommended:**  Yes (future)
 
-#### PostgreSQL 🐘
+#### PostgreSQL 
 
 **For:**
 
@@ -281,7 +281,7 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 -   Good for relational data
 -   Free hosting options (Supabase, Railway)
 
-#### Redis ⚡
+#### Redis 
 
 **For:**
 
@@ -305,7 +305,7 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 
 ---
 
-## 🔐 Authentication (Phase 4)
+##  Authentication (Phase 4)
 
 ### Recommended: JWT + HTTP-only Cookies
 
@@ -328,11 +328,11 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 
 ---
 
-## 📦 Package Management
+##  Package Management
 
 ### npm vs yarn vs pnpm
 
-**Chosen:** 🤔 **npm** (but any works)
+**Chosen:**  **npm** (but any works)
 
 **Why:**
 
@@ -347,11 +347,11 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 
 ---
 
-## 🚀 Deployment
+##  Deployment
 
-### Frontend: Vercel ▲
+### Frontend: Vercel 
 
-**Chosen:** ✅ Yes
+**Chosen:**  Yes
 
 **Why:**
 
@@ -368,9 +368,9 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 -   **GitHub Pages:** Free but no server-side rendering
 -   **AWS S3 + CloudFront:** More complex setup
 
-### Backend: Railway 🚂 or Render 🎨
+### Backend: Railway  or Render 
 
-**Chosen:** ✅ Either
+**Chosen:**  Either
 
 #### Railway
 
@@ -409,11 +409,11 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 
 ---
 
-## 🧪 Testing
+##  Testing
 
-### Unit Testing: Vitest ⚡
+### Unit Testing: Vitest 
 
-**Chosen:** ✅ Yes
+**Chosen:**  Yes
 
 **Why:**
 
@@ -422,9 +422,9 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 -   Jest-compatible API
 -   Built-in TypeScript support
 
-### E2E Testing: Playwright 🎭
+### E2E Testing: Playwright 
 
-**Chosen:** ✅ Yes (for later)
+**Chosen:**  Yes (for later)
 
 **Why:**
 
@@ -435,7 +435,7 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 
 ---
 
-## 🔧 Development Tools
+##  Development Tools
 
 ### Code Quality
 
@@ -455,7 +455,7 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 
 ---
 
-## 📊 Monitoring (Production)
+##  Monitoring (Production)
 
 ### Recommended Tools
 
@@ -466,32 +466,32 @@ This document explains the key technology choices for the AI Drawing Canvas proj
 
 ---
 
-## 🎯 Final Technology Stack Summary
+##  Final Technology Stack Summary
 
 ### Frontend
 
 ```
 React.js 18+
-├── Vite (build tool)
-├── Fabric.js (canvas)
-├── TailwindCSS (styling)
-├── Socket.io-client (WebSocket)
-├── Axios (HTTP client)
-├── KaTeX (math rendering)
-└── Tesseract.js (OCR - optional)
+ Vite (build tool)
+ Fabric.js (canvas)
+ TailwindCSS (styling)
+ Socket.io-client (WebSocket)
+ Axios (HTTP client)
+ KaTeX (math rendering)
+ Tesseract.js (OCR - optional)
 ```
 
 ### Backend
 
 ```
 Node.js 18+
-├── Express.js (server)
-├── Socket.io (WebSocket)
-├── Groq SDK (AI)
-├── Sharp (image processing)
-├── Multer (file uploads)
-├── CORS (security)
-└── dotenv (env variables)
+ Express.js (server)
+ Socket.io (WebSocket)
+ Groq SDK (AI)
+ Sharp (image processing)
+ Multer (file uploads)
+ CORS (security)
+ dotenv (env variables)
 ```
 
 ### Optional/Future
@@ -505,7 +505,7 @@ Docker (containerization)
 
 ---
 
-## 💡 Key Principles
+##  Key Principles
 
 1. **Start Simple:** Use simpler tools for MVP, upgrade when needed
 2. **Proven Technologies:** Use mature, well-documented tools
@@ -516,7 +516,7 @@ Docker (containerization)
 
 ---
 
-## 🔄 Evolution Path
+##  Evolution Path
 
 ### Phase 1 (MVP)
 
@@ -539,7 +539,7 @@ Docker (containerization)
 
 ---
 
-## 📚 Learning Resources
+##  Learning Resources
 
 ### React & Vite
 

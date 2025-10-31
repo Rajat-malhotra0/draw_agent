@@ -1,153 +1,153 @@
-# Draw Agent - Complete Technical Documentation
+﻿# Draw Agent - Complete Technical Documentation
 
-## 🎯 Overview
+##  Overview
 
 Draw Agent is an AI-powered interactive canvas where users can draw math problems and an LLM (Llama 4 Scout via Groq API) analyzes the image, solves the problem, and draws the solution back onto the canvas in real-time.
 
 ---
 
-## 📊 System Architecture
+##  System Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                         DRAW AGENT SYSTEM                            │
-└─────────────────────────────────────────────────────────────────────┘
 
-┌──────────────────┐         ┌──────────────────┐         ┌──────────────────┐
-│   FRONTEND       │         │    BACKEND       │         │   GROQ API       │
-│  (React + Vite)  │◄───────►│  (Hono + Node)   │◄───────►│  (Llama 4 Scout) │
-│  Port: 5173      │         │  Port: 3000      │         │  Vision Model    │
-└──────────────────┘         └──────────────────┘         └──────────────────┘
-        │                             │
-        │                             │
-        │      WebSocket (Socket.IO)  │
-        │◄───────────────────────────►│
-        │    Real-time Drawing        │
-        │                             │
+                         DRAW AGENT SYSTEM                            
+
+
+                  
+   FRONTEND                    BACKEND                   GROQ API       
+  (React + Vite)    (Hono + Node)     (Llama 4 Scout) 
+  Port: 5173                 Port: 3000                 Vision Model    
+                  
+                                     
+                                     
+              WebSocket (Socket.IO)  
+        
+            Real-time Drawing        
+                                     
 ```
 
 ---
 
-## 🔄 Complete User Flow
+##  Complete User Flow
 
 ```
 USER INTERACTION FLOW
-═══════════════════════════════════════════════════════════════
+
 
 1. USER DRAWS ON CANVAS
-   │
-   │  User draws: "7 + 11 ="
-   │
-   ▼
-┌─────────────────────────────────┐
-│  Canvas Component (Frontend)    │
-│  - Captures mouse events        │
-│  - Draws on HTML5 Canvas        │
-│  - Stores drawing in canvas     │
-└─────────────────────────────────┘
-   │
-   │  User clicks "Solve" button
-   │
-   ▼
+   
+     User draws: "7 + 11 ="
+   
+   
+
+  Canvas Component (Frontend)    
+  - Captures mouse events        
+  - Draws on HTML5 Canvas        
+  - Stores drawing in canvas     
+
+   
+     User clicks "Solve" button
+   
+   
 
 2. CANVAS TO IMAGE CONVERSION
-   │
-   ▼
-┌─────────────────────────────────┐
-│  solveCanvas() function         │
-│  - Converts canvas to base64    │
-│  - const imageData =            │
-│    canvas.toDataURL('image/png')│
-└─────────────────────────────────┘
-   │
-   │  POST /api/ai/solve
-   │  { image: "data:image/png;base64,..." }
-   │
-   ▼
+   
+   
+
+  solveCanvas() function         
+  - Converts canvas to base64    
+  - const imageData =            
+    canvas.toDataURL('image/png')
+
+   
+     POST /api/ai/solve
+     { image: "data:image/png;base64,..." }
+   
+   
 
 3. BACKEND RECEIVES IMAGE
-   │
-   ▼
-┌─────────────────────────────────┐
-│  ai.routes.js                   │
-│  - Validates image data         │
-│  - Checks API key               │
-└─────────────────────────────────┘
-   │
-   │  Calls solveMathProblem()
-   │
-   ▼
+   
+   
+
+  ai.routes.js                   
+  - Validates image data         
+  - Checks API key               
+
+   
+     Calls solveMathProblem()
+   
+   
 
 4. GROQ API CALL
-   │
-   ▼
-┌─────────────────────────────────┐
-│  groqService.js                 │
-│  - Prepares vision prompt       │
-│  - Sends image to Llama 4 Scout │
-│  - Model analyzes drawing       │
-└─────────────────────────────────┘
-   │
-   │  Returns: "The answer is 18"
-   │
-   ▼
+   
+   
+
+  groqService.js                 
+  - Prepares vision prompt       
+  - Sends image to Llama 4 Scout 
+  - Model analyzes drawing       
+
+   
+     Returns: "The answer is 18"
+   
+   
 
 5. ANSWER EXTRACTION
-   │
-   ▼
-┌─────────────────────────────────┐
-│  Answer Parsing Logic           │
-│  - Regex patterns extract "18"  │
-│  - Cleans formatting            │
-└─────────────────────────────────┘
-   │
-   │  Extracted: "18"
-   │
-   ▼
+   
+   
+
+  Answer Parsing Logic           
+  - Regex patterns extract "18"  
+  - Cleans formatting            
+
+   
+     Extracted: "18"
+   
+   
 
 6. DRAWING COMMANDS VIA WEBSOCKET
-   │
-   ▼
-┌─────────────────────────────────┐
-│  Socket.IO Broadcasting         │
-│  - Emits 'llm-draw' events      │
-│  - Sends drawing commands       │
-│  - Timed with setTimeout        │
-└─────────────────────────────────┘
-   │
-   │  io.emit('llm-draw', {action, data})
-   │
-   ▼
+   
+   
+
+  Socket.IO Broadcasting         
+  - Emits 'llm-draw' events      
+  - Sends drawing commands       
+  - Timed with setTimeout        
+
+   
+     io.emit('llm-draw', {action, data})
+   
+   
 
 7. FRONTEND RECEIVES & RENDERS
-   │
-   ▼
-┌─────────────────────────────────┐
-│  Canvas WebSocket Listener      │
-│  - Receives drawing commands    │
-│  - Draws checkmark ✓            │
-│  - Draws "Answer:" label        │
-│  - Draws "18" in blue           │
-└─────────────────────────────────┘
-   │
-   │  User sees result on canvas!
-   │
-   ▼
+   
+   
+
+  Canvas WebSocket Listener      
+  - Receives drawing commands    
+  - Draws checkmark             
+  - Draws "Answer:" label        
+  - Draws "18" in blue           
+
+   
+     User sees result on canvas!
+   
+   
 
 8. SOLUTION MODAL DISPLAY
-   │
-   ▼
-┌─────────────────────────────────┐
-│  showSolution() function        │
-│  - Creates modal overlay        │
-│  - Shows full explanation       │
-│  - User clicks "Close"          │
-└─────────────────────────────────┘
+   
+   
+
+  showSolution() function        
+  - Creates modal overlay        
+  - Shows full explanation       
+  - User clicks "Close"          
+
 ```
 
 ---
 
-## 💻 Code Deep Dive
+##  Code Deep Dive
 
 ### 1. Frontend Canvas Component
 
@@ -339,7 +339,7 @@ app.post('/solve', async (c) => {
                     finalAnswer = finalAnswer
                         .replace(/\*\*/g, "")      // Remove bold
                         .replace(/^\*+|\*+$/g, "") // Remove asterisks
-                        .replace(/^[-–—]\s*/, "")  // Remove dashes
+                        .replace(/^[-]\s*/, "")  // Remove dashes
                         .replace(/\$/g, "")        // Remove $
                         .trim();
                     if (finalAnswer.length > 0 && finalAnswer.length < 50) {
@@ -584,7 +584,7 @@ export { io };
 
 ---
 
-## 🎨 Drawing Command Format
+##  Drawing Command Format
 
 ### Line Command (for Checkmark)
 ```javascript
@@ -615,32 +615,32 @@ export { io };
 
 ---
 
-## ⏱️ Animation Timeline
+##  Animation Timeline
 
 ```
-Time (ms)  │  Event
-═══════════╪════════════════════════════════════════════
-   0       │  User clicks "Solve"
-   +       │  Canvas converts to image
-   +       │  POST request to /api/ai/solve
-   +       │  Backend calls Groq API (1-3 seconds)
-───────────┼────────────────────────────────────────────
-  300      │  ✓ Draw checkmark part 1 (green line)
-  500      │  ✓ Draw checkmark part 2 (green line)
-  700      │  Draw "Answer:" label (gray text)
-  900      │  Draw "18" (blue text, size 28)
-───────────┼────────────────────────────────────────────
-  900+     │  Show solution modal with full explanation
+Time (ms)    Event
+
+   0         User clicks "Solve"
+   +         Canvas converts to image
+   +         POST request to /api/ai/solve
+   +         Backend calls Groq API (1-3 seconds)
+
+  300         Draw checkmark part 1 (green line)
+  500         Draw checkmark part 2 (green line)
+  700        Draw "Answer:" label (gray text)
+  900        Draw "18" (blue text, size 28)
+
+  900+       Show solution modal with full explanation
 ```
 
 ---
 
-## 🔍 Answer Extraction Algorithm
+##  Answer Extraction Algorithm
 
 ```javascript
 /*
   STEP-BY-STEP ANSWER EXTRACTION
-  ═════════════════════════════════════════════
+  
   
   INPUT: "Step 1: Add 7 + 11\nStep 2: The result is 18\nTherefore, the answer is 18."
   
@@ -696,151 +696,151 @@ for (const pattern of patterns) {
 
 ---
 
-## 📦 Data Flow Diagram
+##  Data Flow Diagram
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                        DATA FLOW                                     │
-└─────────────────────────────────────────────────────────────────────┘
+
+                        DATA FLOW                                     
+
 
 USER DRAWS "7 + 11 ="
-        │
-        ▼
+        
+        
     [Canvas]
-        │ canvas.toDataURL('image/png')
-        ▼
+         canvas.toDataURL('image/png')
+        
 "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg..."
-        │
-        │ POST /api/ai/solve
-        ▼
+        
+         POST /api/ai/solve
+        
     [Backend Route]
-        │
-        │ solveMathProblem(image, options)
-        ▼
+        
+         solveMathProblem(image, options)
+        
     [Groq Service]
-        │
-        │ groq.chat.completions.create({
-        │   messages: [{
-        │     content: [
-        │       { type: "text", text: "Solve this..." },
-        │       { type: "image_url", image_url: { url: imageData } }
-        │     ]
-        │   }],
-        │   model: "meta-llama/llama-4-scout-17b-16e-instruct"
-        │ })
-        ▼
+        
+         groq.chat.completions.create({
+           messages: [{
+             content: [
+               { type: "text", text: "Solve this..." },
+               { type: "image_url", image_url: { url: imageData } }
+             ]
+           }],
+           model: "meta-llama/llama-4-scout-17b-16e-instruct"
+         })
+        
     [Llama 4 Scout]
-        │ Vision Model Processes Image
-        │ Recognizes: "7 + 11 ="
-        ▼
+         Vision Model Processes Image
+         Recognizes: "7 + 11 ="
+        
 "## Step 1: Understand the Problem
 We need to add 7 and 11.
 ## Step 2: Calculate
 7 + 11 = 18
 Therefore, the answer is 18."
-        │
-        ▼
+        
+        
     [Answer Extraction]
-        │ Regex patterns extract
-        ▼
+         Regex patterns extract
+        
     finalAnswer = "18"
-        │
-        ▼
+        
+        
     [WebSocket Broadcast]
-        │
-        ├─► io.emit('llm-draw', {action: 'line', ...})  // Checkmark part 1
-        ├─► io.emit('llm-draw', {action: 'line', ...})  // Checkmark part 2
-        ├─► io.emit('llm-draw', {action: 'text', ...})  // "Answer:"
-        └─► io.emit('llm-draw', {action: 'text', ...})  // "18"
-        │
-        ▼
+        
+         io.emit('llm-draw', {action: 'line', ...})  // Checkmark part 1
+         io.emit('llm-draw', {action: 'line', ...})  // Checkmark part 2
+         io.emit('llm-draw', {action: 'text', ...})  // "Answer:"
+         io.emit('llm-draw', {action: 'text', ...})  // "18"
+        
+        
     [Frontend Canvas]
-        │ socket.on('llm-draw', handleLLMDraw)
-        ▼
+         socket.on('llm-draw', handleLLMDraw)
+        
 RENDERS ON CANVAS:
-✓ Answer: 18
+ Answer: 18
 ```
 
 ---
 
-## 🛠️ Tech Stack Details
+##  Tech Stack Details
 
 ### Frontend
 ```
-Technology      │ Purpose
-════════════════╪═══════════════════════════════════════════
-React 18        │ UI component framework
-Vite 5          │ Fast build tool & dev server
-TanStack Router │ Client-side routing
-Socket.IO Client│ WebSocket real-time communication
-Axios           │ HTTP requests to backend
-HTML5 Canvas API│ Drawing and rendering graphics
+Technology       Purpose
+
+React 18         UI component framework
+Vite 5           Fast build tool & dev server
+TanStack Router  Client-side routing
+Socket.IO Client WebSocket real-time communication
+Axios            HTTP requests to backend
+HTML5 Canvas API Drawing and rendering graphics
 ```
 
 ### Backend
 ```
-Technology      │ Purpose
-════════════════╪═══════════════════════════════════════════
-Hono            │ Lightweight web framework (Express alternative)
-Node.js 18+     │ JavaScript runtime
-Socket.IO       │ WebSocket server for real-time events
-Groq SDK        │ AI API client for Llama models
-dotenv          │ Environment variable management
+Technology       Purpose
+
+Hono             Lightweight web framework (Express alternative)
+Node.js 18+      JavaScript runtime
+Socket.IO        WebSocket server for real-time events
+Groq SDK         AI API client for Llama models
+dotenv           Environment variable management
 ```
 
 ### AI Model
 ```
-Model                              │ Capabilities
-═══════════════════════════════════╪════════════════════════
-meta-llama/llama-4-scout-17b-16e   │ - Vision understanding
--instruct                          │ - Math problem solving
-                                   │ - Step-by-step reasoning
-                                   │ - Tool calling (experimental)
+Model                               Capabilities
+
+meta-llama/llama-4-scout-17b-16e    - Vision understanding
+-instruct                           - Math problem solving
+                                    - Step-by-step reasoning
+                                    - Tool calling (experimental)
 ```
 
 ---
 
-## 🚀 Deployment Architecture
+##  Deployment Architecture
 
 ```
 PRODUCTION ARCHITECTURE
-═══════════════════════════════════════════════════════════
 
-┌───────────────────┐
-│      Users        │
-│   (Web Browser)   │
-└─────────┬─────────┘
-          │ HTTPS
-          ▼
-┌───────────────────┐
-│   Load Balancer   │ (nginx / Cloudflare)
-└─────────┬─────────┘
-          │
-    ┌─────┴─────┐
-    │           │
-    ▼           ▼
-┌─────────┐ ┌─────────┐
-│Frontend │ │Frontend │  (Static files: Vercel/Netlify)
-│Instance │ │Instance │  Port: 443 (HTTPS)
-└─────────┘ └─────────┘
-    │           │
-    │ WSS       │ HTTPS
-    ▼           ▼
-┌───────────────────┐
-│  Backend Server   │  (Node.js: Railway/Render/AWS)
-│  Hono + Socket.IO │  Port: 3000 → 443
-└─────────┬─────────┘
-          │ HTTPS
-          ▼
-┌───────────────────┐
-│   Groq API        │  (External Service)
-│   Llama 4 Scout   │  https://api.groq.com
-└───────────────────┘
+
+
+      Users        
+   (Web Browser)   
+
+           HTTPS
+          
+
+   Load Balancer    (nginx / Cloudflare)
+
+          
+    
+               
+               
+ 
+Frontend  Frontend   (Static files: Vercel/Netlify)
+Instance  Instance   Port: 443 (HTTPS)
+ 
+               
+     WSS        HTTPS
+               
+
+  Backend Server     (Node.js: Railway/Render/AWS)
+  Hono + Socket.IO   Port: 3000  443
+
+           HTTPS
+          
+
+   Groq API          (External Service)
+   Llama 4 Scout     https://api.groq.com
+
 ```
 
 ---
 
-## 🔐 Environment Variables
+##  Environment Variables
 
 ### Backend `.env`
 ```bash
@@ -864,7 +864,7 @@ VITE_WS_URL=wss://your-backend-domain.com
 
 ---
 
-## 📝 API Reference
+##  API Reference
 
 ### REST Endpoints
 
@@ -943,7 +943,7 @@ LLM drawing commands (future use).
 
 ### WebSocket Events
 
-#### Client → Server
+#### Client  Server
 ```javascript
 // User drawing
 socket.emit('draw', {
@@ -957,7 +957,7 @@ socket.emit('draw', {
 socket.emit('clear');
 ```
 
-#### Server → Client
+#### Server  Client
 ```javascript
 // LLM drawing commands
 socket.on('llm-draw', (data) => {
@@ -973,7 +973,7 @@ socket.on('clear', () => {
 
 ---
 
-## 🎯 Example Scenarios
+##  Example Scenarios
 
 ### Scenario 1: Simple Addition
 ```
@@ -986,44 +986,44 @@ GROQ:   "To solve 2 + 2:
 
 EXTRACT: "4"
 
-CANVAS: ✓ Answer: 4
+CANVAS:  Answer: 4
 ```
 
 ### Scenario 2: Multiplication
 ```
-INPUT:  "7 × 11 ="
+INPUT:  "7  11 ="
 
 GROQ:   "## Step 1: Understand the Problem
          We need to multiply 7 by 11.
          
          ## Step 2: Calculate
-         7 × 11 = 77
+         7  11 = 77
          
          The final answer is 77."
 
 EXTRACT: "77"
 
-CANVAS: ✓ Answer: 77
+CANVAS:  Answer: 77
 ```
 
 ### Scenario 3: Complex Expression
 ```
-INPUT:  "(8 + 4) ÷ 3 ="
+INPUT:  "(8 + 4)  3 ="
 
 GROQ:   "Let's solve step by step:
          1. First, solve the parentheses: 8 + 4 = 12
-         2. Then divide by 3: 12 ÷ 3 = 4
+         2. Then divide by 3: 12  3 = 4
          
          Answer is 4."
 
 EXTRACT: "4"
 
-CANVAS: ✓ Answer: 4
+CANVAS:  Answer: 4
 ```
 
 ---
 
-## 🐛 Debugging & Logging
+##  Debugging & Logging
 
 ### Backend Logs
 ```javascript
@@ -1055,7 +1055,7 @@ socket.on('llm-draw', (data) => {
 
 ---
 
-## 🎨 Customization Guide
+##  Customization Guide
 
 ### Change Answer Position
 ```javascript
@@ -1065,8 +1065,8 @@ setTimeout(() => {
         action: "text",
         data: {
             text: finalAnswer,
-            x: 300,  // ← Change X position
-            y: 150,  // ← Change Y position
+            x: 300,  //  Change X position
+            y: 150,  //  Change Y position
             color: "#1E90FF",
             size: 28,
         },
@@ -1077,22 +1077,22 @@ setTimeout(() => {
 ### Change Colors
 ```javascript
 // Checkmark color
-color: "#4CAF50",  // Green → Change to any hex color
+color: "#4CAF50",  // Green  Change to any hex color
 
 // Answer color
-color: "#1E90FF",  // Blue → Change to any hex color
+color: "#1E90FF",  // Blue  Change to any hex color
 
 // Label color
-color: "#666666",  // Gray → Change to any hex color
+color: "#666666",  // Gray  Change to any hex color
 ```
 
 ### Adjust Animation Speed
 ```javascript
 // Current timing:
-setTimeout(() => { /* checkmark 1 */ }, 300);   // ← First animation
-setTimeout(() => { /* checkmark 2 */ }, 500);   // ← Second animation
-setTimeout(() => { /* label */ }, 700);         // ← Third animation
-setTimeout(() => { /* answer */ }, 900);        // ← Fourth animation
+setTimeout(() => { /* checkmark 1 */ }, 300);   //  First animation
+setTimeout(() => { /* checkmark 2 */ }, 500);   //  Second animation
+setTimeout(() => { /* label */ }, 700);         //  Third animation
+setTimeout(() => { /* answer */ }, 900);        //  Fourth animation
 
 // For faster animation, decrease numbers
 // For slower animation, increase numbers
@@ -1100,32 +1100,32 @@ setTimeout(() => { /* answer */ }, 900);        // ← Fourth animation
 
 ---
 
-## 📊 Performance Metrics
+##  Performance Metrics
 
 ```
-Operation           │ Typical Time │ Optimizations
-════════════════════╪══════════════╪═══════════════════════════
-Canvas Drawing      │ < 1ms        │ Hardware accelerated
-Canvas to Image     │ 50-100ms     │ PNG compression
-HTTP Request        │ 10-50ms      │ Keep-alive connections
-Groq API Call       │ 1-3s         │ Vision model processing
-Answer Extraction   │ < 1ms        │ Regex matching
-WebSocket Emit      │ < 5ms        │ Binary protocol
-Canvas Rendering    │ < 1ms        │ RequestAnimationFrame
-Total (User Click   │ 1.5-4s       │ Parallel processing
-to Answer Drawn)    │              │
+Operation            Typical Time  Optimizations
+
+Canvas Drawing       < 1ms         Hardware accelerated
+Canvas to Image      50-100ms      PNG compression
+HTTP Request         10-50ms       Keep-alive connections
+Groq API Call        1-3s          Vision model processing
+Answer Extraction    < 1ms         Regex matching
+WebSocket Emit       < 5ms         Binary protocol
+Canvas Rendering     < 1ms         RequestAnimationFrame
+Total (User Click    1.5-4s        Parallel processing
+to Answer Drawn)                  
 ```
 
 ---
 
-## 🔒 Security Considerations
+##  Security Considerations
 
 ### API Key Protection
 ```javascript
-// ✅ GOOD: API key in .env file (server-side)
+//  GOOD: API key in .env file (server-side)
 GROQ_API_KEY=gsk_secret_key
 
-// ❌ BAD: Never expose in frontend
+//  BAD: Never expose in frontend
 const apiKey = "gsk_secret_key";  // Don't do this!
 ```
 
@@ -1153,7 +1153,7 @@ cors: {
 
 ---
 
-## 🚀 Future Enhancements
+##  Future Enhancements
 
 1. **LLM Tool Calling** - When Groq fully supports it, the LLM can directly call the canvas drawing tool
 2. **Multi-user Collaboration** - Multiple users drawing on same canvas
@@ -1166,7 +1166,7 @@ cors: {
 
 ---
 
-## 📚 Key Takeaways
+##  Key Takeaways
 
 1. **Vision AI**: Llama 4 Scout analyzes drawings using computer vision
 2. **Real-time Communication**: WebSocket enables instant LLM-to-canvas drawing
@@ -1177,6 +1177,6 @@ cors: {
 
 ---
 
-**System Status:** ✅ Fully Operational
+**System Status:**  Fully Operational
 **Last Updated:** October 31, 2025
 **Version:** 1.0.0

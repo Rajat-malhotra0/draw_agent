@@ -1,4 +1,4 @@
-# 🚀 Quick Start Guide
+﻿#  Quick Start Guide
 
 Get your AI Drawing Canvas up and running in 10 minutes!
 
@@ -90,7 +90,7 @@ npm run dev
 3. Click "Solve" button
 4. Watch the AI respond!
 
-## 🎨 Minimal Working Example
+##  Minimal Working Example
 
 If you want to test the concept quickly, here's a single-file approach:
 
@@ -219,7 +219,7 @@ node test-server.js
 # Open test-canvas.html in browser
 ```
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### CORS Issues
 
@@ -244,17 +244,17 @@ Check if mouse events are properly bound and `isDrawing` state is managed.
 -   Ensure Socket.io versions match on client and server
 -   Check if port 3000 is not blocked by firewall
 
-## 📚 Next Steps
+##  Next Steps
 
-1. ✅ Get basic drawing working
-2. ✅ Test Groq API integration
-3. 📖 Read the full [PROJECT_PLAN.md](./PROJECT_PLAN.md)
-4. 🏗️ Build out the full architecture
-5. 🎨 Add advanced drawing features
-6. 🤖 Implement AI drawing capabilities
-7. 🚀 Deploy your application
+1.  Get basic drawing working
+2.  Test Groq API integration
+3.  Read the full [PROJECT_PLAN.md](./PROJECT_PLAN.md)
+4.  Build out the full architecture
+5.  Add advanced drawing features
+6.  Implement AI drawing capabilities
+7.  Deploy your application
 
-## 💡 Tips
+##  Tips
 
 -   Start simple and iterate
 -   Test each component independently
@@ -263,7 +263,7 @@ Check if mouse events are properly bound and `isDrawing` state is managed.
 -   Check terminal for backend errors
 -   Use Postman to test API endpoints
 
-## 🆘 Need Help?
+##  Need Help?
 
 -   Check the [PROJECT_PLAN.md](./PROJECT_PLAN.md) for detailed architecture
 -   Review Groq API documentation
@@ -272,4 +272,4 @@ Check if mouse events are properly bound and `isDrawing` state is managed.
 
 ---
 
-**Happy Coding!** 🎉
+**Happy Coding!** 

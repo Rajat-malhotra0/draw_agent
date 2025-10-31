@@ -1,10 +1,10 @@
-# 💻 Code Examples & Implementation Snippets
+﻿#  Code Examples & Implementation Snippets
 
 Complete code examples for building the AI Drawing Canvas with Groq integration.
 
 ---
 
-## 🤖 Groq API Integration
+##  Groq API Integration
 
 ### Using Llama 4 Scout Vision Model
 
@@ -126,7 +126,7 @@ await solveMathProblemStreaming(imageBase64, (chunk) => {
 
 ---
 
-## 🎨 Canvas Drawing Implementation
+##  Canvas Drawing Implementation
 
 ### Basic HTML5 Canvas Setup
 
@@ -420,7 +420,7 @@ export default DrawingCanvas;
 
 ---
 
-## 🖥️ Backend API Implementation
+##  Backend API Implementation
 
 ### Express.js Server Setup
 
@@ -538,13 +538,13 @@ function extractAction(line) {
         return "subtraction";
     } else if (
         line.toLowerCase().includes("multiply") ||
-        line.includes("×") ||
+        line.includes("") ||
         line.includes("*")
     ) {
         return "multiplication";
     } else if (
         line.toLowerCase().includes("divide") ||
-        line.includes("÷") ||
+        line.includes("") ||
         line.includes("/")
     ) {
         return "division";
@@ -655,7 +655,7 @@ export default api;
 
 ---
 
-## 🔌 WebSocket Integration
+##  WebSocket Integration
 
 ### Socket.io Server Setup
 
@@ -799,7 +799,7 @@ export const useWebSocket = (url) => {
 
 ---
 
-## 🎯 Complete React App Example
+##  Complete React App Example
 
 ```jsx
 // frontend/src/App.jsx
@@ -881,7 +881,7 @@ export default App;
 
 ---
 
-## 📦 Package.json Files
+##  Package.json Files
 
 ### Backend package.json
 
@@ -945,7 +945,7 @@ export default App;
 
 ---
 
-## 🔐 Environment Variables
+##  Environment Variables
 
 ### Backend .env.example
 
@@ -974,4 +974,4 @@ VITE_WS_URL=http://localhost:3000
 
 ---
 
-**Ready to start coding!** 🚀 Use these examples as a foundation for your project.
+**Ready to start coding!**  Use these examples as a foundation for your project.
