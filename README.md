@@ -20,7 +20,6 @@ All documentation is organized in the [`docs/`](docs/) folder:
 | ------------------------------------------------------------ | ------------------------------------------------- |
 | **[docs/PROJECT_SUMMARY.md](docs/PROJECT_SUMMARY.md)**       |  Executive summary with architecture & diagrams |
 | **[docs/PROJECT_PLAN.md](docs/PROJECT_PLAN.md)**             |  Detailed project specification & features      |
-| **[docs/ROADMAP.md](docs/ROADMAP.md)**                       |  6-8 week development timeline                  |
 | **[docs/QUICKSTART.md](docs/QUICKSTART.md)**                 |  Get running in 10 minutes                      |
 | **[docs/NEXT_STEPS.md](docs/NEXT_STEPS.md)**                 |  Immediate action items & weekly plan           |
 | **[docs/TECH_DECISIONS.md](docs/TECH_DECISIONS.md)**         |  Technology stack explained                     |
